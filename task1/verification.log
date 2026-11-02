@@ -1,0 +1,42 @@
+{
+  "time": "2026-11-02T08:29:36.362784+08:00",
+  "source_commit": "9a91cfafe754aa85daee49998176275667eb58f2",
+  "gpu": "NVIDIA GeForce RTX 5060 Ti",
+  "torch": "2.9.1+cu130",
+  "scope": "Actual Mini allocator + CUDA store_cache; synthetic K/V, no model forward or HiCache deployment in this test",
+  "config_read_only": {
+    "model": "qwen3",
+    "layers": 28,
+    "kv_heads": 8,
+    "head_dim": 128
+  },
+  "page_size": 16,
+  "input_tokens": 35,
+  "allocated_pages": 3,
+  "tail_unused_slots": 13,
+  "physical_pages": [
+    7,
+    2,
+    5
+  ],
+  "token_34_physical_slot": 82,
+  "pool_shape": [
+    2,
+    2,
+    8,
+    16,
+    2,
+    128
+  ],
+  "checks": {
+    "noncontiguous_page_mapping": "PASS",
+    "cuda_store_kv_two_layers": "PASS",
+    "layer_isolation_and_untouched_slot": "PASS",
+    "decode_reuses_partial_page": "PASS",
+    "decode_write_preserves_history": "PASS",
+    "context_lifetime": "PASS",
+    "free_pages_restored_without_duplicates": "PASS",
+    "request_slots_restored": "PASS"
+  }
+}
+PASS: 8 checks; real CUDA KV writes and allocator lifecycle verified
